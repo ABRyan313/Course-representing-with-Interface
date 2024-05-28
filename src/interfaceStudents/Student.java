@@ -7,16 +7,16 @@ public class Student implements Istudent{
 	private int id;
 	private String name;
 	private String mail;
-	ArrayList <Course> courses = new ArrayList<>();
+	ArrayList <Icourse> courses = new ArrayList<>();
 	
-	public Student(String name, String mail, Course ... course) throws Exception {
+	public Student(String name, String mail, Icourse ... course) throws Exception {
 		
 		if(!Istudent.studentOk(name, mail)) throw new Exception("Invalid name/mail");
 		this.name = name;
 		this.mail = mail;
 		
 		
-		for(Course c : course)
+		for(Icourse c : course)
 			courses.add(c);
 		
 		id = ++number;  
@@ -53,14 +53,14 @@ public class Student implements Istudent{
 		
 	}
 	
-	public Course getCourse(int n) {
+	public Icourse getCourse(int n) {
 		return courses.get(n);
 	}
 	
 	
 	
-	public Course getCourses( String id) throws Exception {
-		for(Course c : courses)
+	public Icourse getCourses( String id) throws Exception {
+		for(Icourse c : courses)
 			if(c.getId().equals(id))
 				return c;
 		throw new Exception("Course not found");
@@ -68,16 +68,16 @@ public class Student implements Istudent{
 
 	
 
-	public ArrayList<Course> getCourses(int year) {
-		ArrayList <Course> list = new ArrayList<>();
-		for(Course c: courses)
+	public ArrayList<Icourse> getCourses(int year) {
+		ArrayList <Icourse> list = new ArrayList<>();
+		for(Icourse c: courses)
 			if(c.getYear() == year)
 				list.add(c);
 		return list;
 	}
 	
-	public void add(Course course) throws Exception{
-		for (Course c : courses) {
+	public void add(Icourse course) throws Exception{
+		for (Icourse c : courses) {
 			if(course.getId().equals(c.getId()))
 				throw new Exception ("Course is already added");
 			courses.add(course);

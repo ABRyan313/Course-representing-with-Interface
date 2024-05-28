@@ -28,34 +28,43 @@ public class Course implements Icourse {
 	public boolean completed() {
 		return score > Integer.MIN_VALUE;
 	}
-	
-	public int getScore() throws Exception{
-		if (score == Integer.MIN_VALUE) throw new Exception("Not completed");
+
+	public int getScore() throws Exception {
+		if (score == Integer.MIN_VALUE)
+			throw new Exception("Not completed");
 		return score;
 	}
-	
-	public void setScore(int score) throws Exception{
-		if(!scoreOk(score)) throw new Exception("Illegal character!");
+
+	public void setScore(int score) throws Exception {
+		if (!scoreOk(score))
+			throw new Exception("Illegal character!");
 		this.score = score;
 	}
-	
-	public void setScore(String score) throws Exception{
+
+	public void setScore(String score) throws Exception {
 		try {
 			int number = Integer.parseInt(score);
-			if (!scoreOk(number)) throw new Exception("Illegal Score");
+			if (!scoreOk(number))
+				throw new Exception("Illegal Score");
 			this.score = number;
-		}
-		catch(Exception E) {
+		} catch (Exception E) {
 			System.out.println("Illegal score!");
 		}
 	}
-	
+
 	public String toString() {
 		return sub.toString();
 	}
-	
+
 	public boolean scoreOk(int score) {
 		return true;
+	}
+
+	public Course(int year, String name, String id) throws Exception {
+		 sub = new Subject(name, id);
+		if (!Icourse.courseOk(year, sub))
+			throw new Exception("Illegal year");
+		this.year = year;
 	}
 
 }

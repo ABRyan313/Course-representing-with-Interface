@@ -9,9 +9,9 @@ public interface Istudent {
 	public void setName(String name);
 	public int getCount();
 	public String getMail();
-	public Course getCourse(int n);
-	public Course getCourses( String id) throws Exception;
-	public ArrayList<Course> getCourses(int year);
+	public Icourse getCourse(int n);
+	public Icourse getCourses( String id) throws Exception;
+	public ArrayList<Icourse> getCourses(int year);
 	public String toString();
 	
 	public static boolean studentOk(String name, String mail) {
@@ -26,5 +26,7 @@ public interface Istudent {
 				 return m.matches();
 		}
 	}
+
+	
 
 }
